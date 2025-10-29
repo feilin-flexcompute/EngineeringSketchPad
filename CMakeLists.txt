@@ -23,6 +23,7 @@ install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/lib/ DESTINATION lib)
 install(FILES
     "${CMAKE_CURRENT_SOURCE_DIR}/include/egadsErrors.h"
     "${CMAKE_CURRENT_SOURCE_DIR}/include/egadsTypes.h"
+    "${CMAKE_CURRENT_SOURCE_DIR}/include/capsErrors.h"
     "${CMAKE_CURRENT_SOURCE_DIR}/include/OpenCSM.h"
     "${CMAKE_CURRENT_SOURCE_DIR}/include/prm.h"
     DESTINATION include
