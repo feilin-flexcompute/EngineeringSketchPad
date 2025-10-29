@@ -6,7 +6,7 @@ set -x # echo commands
 
 esp=ESP
 
-rm -rf include lib pyESP/py*
+rm -rf include lib udc pyESP/py*
 
 cp -r ${esp}/EngSketchPad/pyESP/pyCAPS pyESP
 cp ${esp}/EngSketchPad/src/CAPS/udunits/*.xml pyESP/pyCAPS
@@ -36,3 +36,4 @@ export RPATH=-Wl,-rpath='$$ORIGIN:$$ORIGIN/../lib',--disable-new-dtags
 
 cp ${esp}/EngSketchPad/lib/* lib
 cp -r ${esp}/EngSketchPad/include include
+cp -r ${esp}/EngSketchPad/udc udc
