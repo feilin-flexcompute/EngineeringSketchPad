@@ -19,5 +19,11 @@ set_property(TARGET egads PROPERTY CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 set_property(TARGET egads PROPERTY INSTALL_RPATH "$ORIGIN:$ORIGIN/../lib:${CMAKE_CURRENT_SOURCE_DIR}/lib")
 
 install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/lib/ DESTINATION lib)
+# ESP_ROOT correctness verified with egadsErrors.h
+install(FILES
+    "${CMAKE_CURRENT_SOURCE_DIR}/include/egadsErrors.h"
+    DESTINATION include
+)
+
 
 add_subdirectory(test)
