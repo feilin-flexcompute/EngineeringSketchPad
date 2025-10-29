@@ -20,6 +20,11 @@ import threading
 from sys import version_info
 #import xml.etree.ElementTree as xmlElementTree
 
+current_file_path = os.path.abspath(__file__)
+current_dir_name = os.path.dirname(current_file_path)
+os.environ["UDUNITS2_XML_PATH"] = os.path.join( current_dir_name, "udunits2.xml")
+os.environ["ESP_ARCH"] = "LINUX64"
+os.environ["CASREV"] = "7.8"
 from pyEGADS import egads
 
 
