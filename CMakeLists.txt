@@ -28,6 +28,6 @@ install(FILES
     "${CMAKE_CURRENT_SOURCE_DIR}/include/prm.h"
     DESTINATION include
 )
-
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/udc/ DESTINATION udc)
 
 add_subdirectory(test)
