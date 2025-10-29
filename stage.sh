@@ -10,6 +10,7 @@ rm -rf include lib pyESP/py*
 
 cp -r ${esp}/EngSketchPad/pyESP/pyCAPS pyESP
 cp ${esp}/EngSketchPad/src/CAPS/udunits/*.xml pyESP/pyCAPS
+patch -p1 < pycaps.patch
 cp -r ${esp}/EngSketchPad/pyESP/pyEGADS pyESP
 cp -r ${esp}/EngSketchPad/pyESP/pyOCSM pyESP
 
