@@ -6,6 +6,8 @@ https://flexcompute.github.io/EngineeringSketchPad/EngSketchPad/ESP/ESP-help.htm
 
 # Staging prebuild artifacts for commit
 
+The artifacts should be build on a machine with an old enough version of glibc to cover expected deployments.
+
 ```
 [edit download.sh and stage.sh to confirm versions]
 ./download.sh
