@@ -34,6 +34,9 @@ export RPATH=-Wl,-rpath='$$ORIGIN:$$ORIGIN/../lib',--disable-new-dtags
 ( cd ${esp}/EngSketchPad/src/OpenCSM && \
   make clean && \
   make -j ${ESP_ROOT}/lib/libocsm.so RPATH=\'${RPATH}\' )
+( cd PlugIn/EdgeAttr && \
+  make clean && \
+  make RPATH=\'${RPATH}\' )
 
 cp ${esp}/EngSketchPad/lib/* lib
 cp -r ${esp}/EngSketchPad/include include
