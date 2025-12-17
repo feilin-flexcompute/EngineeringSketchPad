@@ -19,4 +19,5 @@ Commit new, removed, and modfied files.
 Create an annotated tag for use in compute FetchContent
 ```
 git tag -a espMajor.espMinor.bugFix -m "Why this version is needed"
+git push --tags
 ```
