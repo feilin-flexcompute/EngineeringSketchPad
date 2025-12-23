@@ -1,9 +1,15 @@
-name: Release with LFS
+name: Create Release
 
 on:
   push:
     tags:
       - '**'
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Existing tag name to create release for'
+        required: true
+        type: string
 
 jobs:
   release:
@@ -11,18 +17,25 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          ref: ${{ inputs.tag || github.ref }}
           lfs: true  # This fetches LFS files automatically
-      
+
       # Optional: explicitly pull LFS files
       - name: Pull LFS files
         run: git lfs pull
-      
+
+      - name: Set release tag
+        id: tag
+        run: echo "name=${{ inputs.tag || github.ref_name }}" >> $GITHUB_OUTPUT
+
       - name: Create archive with real binaries
         run: |
-          # Create a zip excluding .git folder
-          zip -r my-project-full.zip . -x ".git/*"
-      
+          # Create a tar.gz excluding .git folder
+          tar --exclude='.git' -czvf ${{ github.event.repository.name }}-${{ steps.tag.outputs.name }}.tar.gz .
+
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
-          files: my-project-full.zip
+          tag_name: ${{ steps.tag.outputs.name }}
+          name: ${{ steps.tag.outputs.name }}
+          files: ${{ github.event.repository.name }}-${{ steps.tag.outputs.name }}.tar.gz
