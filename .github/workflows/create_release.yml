@@ -30,8 +30,7 @@ jobs:
 
       - name: Create archive with real binaries
         run: |
-          # Create a tar.gz excluding .git folder
-          tar --exclude='.git' -czvf ${{ github.event.repository.name }}-${{ steps.tag.outputs.name }}.tar.gz .
+          git archive --format=tar.gz -o ${{ github.event.repository.name }}-${{ steps.tag.outputs.name }}.tar.gz HEAD
 
       - name: Create Release
         uses: softprops/action-gh-release@v1
