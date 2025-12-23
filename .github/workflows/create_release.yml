@@ -1,0 +1,28 @@
+name: Release with LFS
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true  # This fetches LFS files automatically
+      
+      # Optional: explicitly pull LFS files
+      - name: Pull LFS files
+        run: git lfs pull
+      
+      - name: Create archive with real binaries
+        run: |
+          # Create a zip excluding .git folder
+          zip -r my-project-full.zip . -x ".git/*"
+      
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: my-project-full.zip
